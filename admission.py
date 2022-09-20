@@ -67,8 +67,11 @@ class Admission(object):
         get_login = self.sess.get(login_url)
 
         get_login.encoding = 'utf-8'
+        print("getting lt")
         lt = re.search('name="lt" value="(.*?)"', get_login.text).group(1)
+        print("getting salt")
         salt = re.search('id="pwdDefaultEncryptSalt" value="(.*?)"', get_login.text).group(1)
+        print("getting execution")
         execution = re.search('name="execution" value="(.*?)"', get_login.text).group(1)
 
         f = open(self.path + "/encrypt.js", 'r', encoding='UTF-8')
